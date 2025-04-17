@@ -29,6 +29,6 @@ spec:
         default: false
         controllerValue: "k8s.io/internal-ingress-nginx"  # default: k8s.io/ingress-nginx
       service:
-        clusterIPs:
+        externalIPs:
         - 10.10.10.11
         - 10.10.10.12
