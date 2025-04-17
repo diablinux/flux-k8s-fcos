@@ -1,0 +1,34 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: ingress-nginx
+  namespace: flux-system
+spec:
+  releaseName: ingress-nginx
+  targetNamespace: ingress-nginx
+  install:
+    createNamespace: true # Ensures the namespace is created if it doesn’t exist
+    remediation:
+      retries: 3
+  interval: 10m
+  chart:
+    spec:
+      chart: ingress-nginx
+      version: ">1.12.0"
+      sourceRef:
+        kind: HelmRepository
+        name: ingress-nginx
+        namespace: flux-system
+  values:
+    controller:
+      electionID: ingress-controller-leader
+      ingressClass: internal-nginx  # default: nginx
+      ingressClassResource:
+        name: internal-nginx  # default: nginx
+        enabled: true
+        default: false
+        controllerValue: "k8s.io/internal-ingress-nginx"  # default: k8s.io/ingress-nginx
+      service:
+        clusterIPs:
+        - 10.10.10.11
+        - 10.10.10.12
