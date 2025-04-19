@@ -21,14 +21,13 @@ spec:
         namespace: flux-system
   values:
     controller:
+      hostNetwork: true
       ingressClassResource:
         enabled: true
-    daemonset:
-      enabled: true
-      hostNetwork: true
-    service:
-      enabled: true
-      type: ClusterIP
-      externalIPs:
-      - 10.10.10.11
-      - 10.10.10.12
+      daemonset:
+      service:
+        enabled: true
+        type: LoadBalancer
+        externalIPs:
+        - 10.10.10.11
+        - 10.10.10.12
