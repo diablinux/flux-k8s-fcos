@@ -25,7 +25,16 @@ spec:
       ingressClassResource:
         enabled: true
       daemonset:
+        
       service:
+        httpPort:
+          enabled: true
+          - port: 81
+          - targetPort: http
+        httpsPort:
+          enabled: true
+          - port: 7443
+          - targetPort: https
         enabled: true
         type: LoadBalancer
         externalIPs:
