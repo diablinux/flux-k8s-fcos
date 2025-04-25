@@ -39,6 +39,6 @@ spec:
         memory: 32Mi
     hpa:
       enabled: true
-      maxReplicas: 30
+      maxReplicas: 20
       # average total CPU usage per pod (1-100)
-      cpu: 70
+      cpu: 60
