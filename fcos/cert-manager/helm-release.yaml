@@ -21,6 +21,6 @@ spec:
         namespace: flux-system
   values:
     crds:
-      enable: true
+      enabled: true
     prometheus:
-      enable: false
+      enabled: false
